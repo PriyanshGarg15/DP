@@ -1,6 +1,6 @@
 import java.util.Arrays;
 // Classic Frog Jump problem with a twist. the twist being that a frog can jump K places ahead at a given moment.
-public class a5_atcoder_frog_k_jump {
+public class a7_atcoder_frog_k_jump {
 
     // Non Optimized Solution
     public int frogJump(int n, int[] heights,int K){
@@ -55,7 +55,7 @@ public class a5_atcoder_frog_k_jump {
     //Helper Function
     public static void main(String[] args) {
         int[] dp = new int[100];
-        a5_atcoder_frog_k_jump obj = new a5_atcoder_frog_k_jump();
+        a7_atcoder_frog_k_jump obj = new a7_atcoder_frog_k_jump();
         Arrays.fill(dp, -1);
         System.out.println(obj.frogJumpTab(3, new int[]{10,20,30,10},2));
         Arrays.fill(dp, -1);
