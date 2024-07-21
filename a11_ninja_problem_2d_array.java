@@ -54,16 +54,19 @@ public class a11_ninja_problem_2d_array {
         dp[0][2] = Math.max(points[0][0], points[0][1]);
         dp[0][3] = Math.max(points[0][0], Math.max(points[0][1], points[0][2]));
 
-        for (int i = 1; i <= day; i++) {
+        for (int i = 1; i <=day; i++) {
             for (int last = 0; last < 4; last++) {
                 dp[i][last] = 0;
+                int maxi=0;
                 for (int task = 0; task < 3; task++) {
                     if (task != last) {
                         int point = points[i][task] + dp[i - 1][task];
-                        dp[i][last] = Math.max(dp[i][last], point);
+                        maxi= Math.max(maxi, point);
                     }
                 }
+                dp[i][last]=maxi;
             }
+            
         }
 
         return dp[day][3];
@@ -73,6 +76,18 @@ public class a11_ninja_problem_2d_array {
         a11_ninja_problem_2d_array solution = new a11_ninja_problem_2d_array();
         int[][] points = {{1, 2, 5}, {3, 1, 1}, {3, 3, 3}};
         int n = points.length;
-        System.out.println(solution.solve2(n-1, n,points)); // Expected output: 11
+
+        // Test Recursion
+        System.out.println("Recursion: " + solution.solve2(n-1, 3, points)); // Expected output: 11
+
+        // Test Memoization
+        int[][] dp = new int[n][4];
+        for (int[] row : dp) {
+            Arrays.fill(row, -1);
+        }
+        System.out.println("Memoization: " + solution.solve(n-1, 3, points, dp)); // Expected output: 11
+
+        // Test Tabulation
+        System.out.println("Tabulation: " + solution.tab(points, n - 1)); // Expected output: 11
     }
 }
